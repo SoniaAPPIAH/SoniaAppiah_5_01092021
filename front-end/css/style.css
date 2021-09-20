@@ -18,7 +18,7 @@ a:hover {
 h1 {
   font-family: 'Mali', cursive;
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 6rem;
 }
 
 h2 {
@@ -34,7 +34,25 @@ footer {
 /* ---------- CARD TEDDIES INDEX.HTML ---------- */
 
 .Teddies-card {
-  margin: 5rem;
+  margin: 7rem 5rem 0 5rem;
   display: flex;
   justify-content: space-around;
+}
+
+#template-card {
+  border: 1px solid rgb(219, 219, 219);
+}
+
+#template-card:hover {
+  border: 2px solid rgb(197, 196, 196);
+}
+
+.description {
+  margin: 2rem 0;
+}
+
+.price {
+  color: rgb(194, 155, 182);;
+  font-weight: bold;
+  font-size: 1.2rem;
 }

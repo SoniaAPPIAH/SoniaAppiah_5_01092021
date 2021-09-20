@@ -17,7 +17,7 @@ fetch(TeddiesAPI)
     .then( jsonListTeddies => {
         for(let jsonTeddies of jsonListTeddies){
             let card = new TeddiesCard(jsonTeddies);
-            document.getElementsByClassName("Teddies-card")[0].innerHTML += ` <div id="template-card" class="justify-content-center text-center">
+            document.getElementsByClassName("Teddies-card")[0].innerHTML += ` <div id="template-card" class="col-2 justify-content-center text-center">
                                                                                     <img class="photo" src=${jsonTeddies.imageUrl}/>
                                                                                     <h2 class="title">${jsonTeddies.name}</h2>
                                                                                     <p class="description">${jsonTeddies.description}</p>

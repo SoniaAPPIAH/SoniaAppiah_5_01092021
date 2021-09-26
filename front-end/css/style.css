@@ -72,3 +72,23 @@ footer {
 
 /* ---------- CARD TEDDIES INDEX.HTML ---------- */
 
+#template-card_product {
+  display: flex;
+  margin: auto;
+  max-width: 1440px;
+  height: 500px;
+  margin-top: 10rem;
+}
+
+.photo_product {
+  width: 500px;
+  height: 300px;
+  object-fit: cover;
+  margin-right: 5rem;
+}
+
+.title_product {
+  text-align: left;
+  margin-bottom: 5rem;
+  padding: 0;
+}

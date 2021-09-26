@@ -25,8 +25,8 @@ function createCards (jsonTeddies) {
                                                                             <p class="description_index">${jsonTeddy.description}</p>
                                                                             <p class="price_index">${jsonTeddy.price}</p>
                                                                          </a>`;
-    }
-    
+    }    
 }
 
 getTeddies ();
+

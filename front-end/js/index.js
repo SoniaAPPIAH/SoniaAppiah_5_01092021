@@ -23,7 +23,7 @@ function createCards (jsonTeddies) {
                                                                             <img class="photo_index" src="${jsonTeddy.imageUrl}"/>
                                                                             <h2 class="title_index">${jsonTeddy.name}</h2>
                                                                             <p class="description_index">${jsonTeddy.description}</p>
-                                                                            <p class="price_index">${jsonTeddy.price}</p>
+                                                                            <p class="price_index">${jsonTeddy.price / 100}€</p>
                                                                          </a>`;
     }    
 }

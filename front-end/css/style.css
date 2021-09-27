@@ -31,7 +31,7 @@ footer {
   padding: 1rem 0;
 }
 
-/* ---------- CARD TEDDIES INDEX.HTML ---------- */
+/* ------------------------------ CARD TEDDIES INDEX.HTML ------------------------------ */
 
 .Teddies-card {
   margin: 4rem 5rem 0 5rem;
@@ -70,7 +70,7 @@ footer {
   font-size: 1.2rem;
 }
 
-/* ---------- CARD TEDDIES INDEX.HTML ---------- */
+/* ------------------------------ CARD TEDDIES PRODUCT.HTML ----------------------------- */
 
 #template-card_product {
   display: flex;
@@ -108,7 +108,7 @@ footer {
 }
 
 
-.btn-add-basket {
+#btn-add-basket {
   width: 200px;
   height: 40px;
   margin-top: 3rem;
@@ -118,7 +118,7 @@ footer {
   border-radius: 10px;
 }
 
-.btn-add-basket:hover {
+#btn-add-basket:hover {
   width: 200px;
   height: 40px;
   margin-top: 3rem;

@@ -6,7 +6,7 @@ let TeddyId = params.get("_id");
 // ---- Personnalisation de l'adresse de l'API ---- //
 const TeddyUrl = `http://localhost:3000/api/teddies/${TeddyId}`;
 
-// ---- Affichage des informations du Teddy selectionné via l'Id ---- //
+// ---- Affichage les informations du Teddy selectionné via l'Id ---- //
 fetch(TeddyUrl)
     .then(data => data.json())
     .then((infoTeddy) => {
@@ -18,24 +18,47 @@ fetch(TeddyUrl)
                                                                                     <div class="bloc_text_product">
                                                                                         <h1 class="title_product">${product.name}</h1>
                                                                                         <p class="description_product">${product.description}</p>
-                                                                                        <p class="price_product">${product.price}</p>
+                                                                                        <p class="price_product">${product.price / 100}€</p>
                                                                                         <label>Couleurs</label>
                                                                                         <select name="colors" class="Teddies-colors"></select>
-                                                                                        <label for="Teddies-quantity">Quantité</label>
+                                                                                        <label for="Teddy-quantity">Quantité</label>
                                                                                         <input type="number" id="Teddy-quantity" name="quantity" min="0" max="99">
-                                                                                        <button class="btn-add-basket">Ajouter au panier</button>
+                                                                                        <button id="btn-add-basket" type="submit">Ajouter au panier</button>
                                                                                     </div>
                                                                                 </div>`;
-        addColors(product);                                                                                               
+            addColors(product); 
+// ---- Ajout des Teddies et leur config au panier ---- //
+            const btnBasket = document.querySelector("#btn-add-basket");
+            
+            btnBasket.addEventListener("click", (event) =>{
+                event.preventDefault();
+
+                const quantity = document.querySelector("#Teddy-quantity");
+                const quantityNumber = quantity.value;
+                console.log(quantity);
+        
+                let infoProduct = {
+                    TeddyId : product._id,
+                    name : product.name,
+                    quantity : quantityNumber,
+                    colors : product.colors,
+                    price : product.price,
+                }
+
+                console.log(infoProduct);
+            })
         }
 
+// ---- Personnalisation des couleurs ---- //
         function addColors(product) {
             for(let colors of product.colors) {
                 document.getElementsByClassName("Teddies-colors")[0].innerHTML += `<option value="${colors}">${colors}</option>`; 
             }
         }
-
-        const btnBasket = document
     });
+
+
+
+
 
 

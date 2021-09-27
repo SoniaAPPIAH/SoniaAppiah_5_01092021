@@ -27,6 +27,7 @@ fetch(TeddyUrl)
                                                                                     </div>
                                                                                 </div>`;
             addColors(product); 
+
 // ---- Ajout des Teddies et leur config au panier ---- //
             const btnBasket = document.querySelector("#btn-add-basket");
             
@@ -35,7 +36,6 @@ fetch(TeddyUrl)
 
                 const quantity = document.querySelector("#Teddy-quantity");
                 const quantityNumber = quantity.value;
-                console.log(quantity);
         
                 let infoProduct = {
                     TeddyId : product._id,
@@ -45,7 +45,22 @@ fetch(TeddyUrl)
                     price : product.price,
                 }
 
-                console.log(infoProduct);
+                //---- Configuration du LocalStorage ---- //
+
+                // JSON.parse = converti les données JSON du LocalStorage en objet JS //
+                let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
+                console.log(productLocalStorage);
+
+                if (productLocalStorage) {
+                    productLocalStorage.push(infoProduct);
+                    localStorage.setItem("product", JSON.stringify(productLocalStorage));
+                }
+
+                else{
+                    productLocalStorage = [];
+                    productLocalStorage.push(infoProduct);
+                    localStorage.setItem("product", JSON.stringify(productLocalStorage));
+                }
             })
         }
 
@@ -56,7 +71,6 @@ fetch(TeddyUrl)
             }
         }
     });
-
 
 
 

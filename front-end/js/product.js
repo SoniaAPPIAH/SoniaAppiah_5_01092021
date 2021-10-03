@@ -44,6 +44,8 @@ fetch(TeddyUrl)
         
                 let infoProduct = {
                     TeddyId : product._id,
+                    image : product.imageUrl,
+                    description : product.description,
                     name : product.name,
                     quantity : quantityNumber,
                     colors : colorsValue,
@@ -54,7 +56,6 @@ fetch(TeddyUrl)
 
                 // JSON.parse = converti les données JSON du LocalStorage en objet JS //
                 let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
-                console.log(productLocalStorage);
 
                 if (productLocalStorage) {
                     productLocalStorage.push(infoProduct);
@@ -70,7 +71,7 @@ fetch(TeddyUrl)
         }
         }
 
-// ---- Personnalisation des couleurs ---- //
+        // ---- Personnalisation des couleurs ---- //
         function addColors(product) {
             for(let colors of product.colors) {
                 document.getElementsByClassName("Teddies-colors")[0].innerHTML += `<option value="${colors}">${colors}</option>`; 

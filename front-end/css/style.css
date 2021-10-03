@@ -19,6 +19,7 @@ h1 {
   font-family: 'Mali', cursive;
   text-align: center;
   padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
 h2 {
@@ -28,6 +29,7 @@ h2 {
 
 footer {
   background-color: rgb(230, 230, 230);
+  margin-top: 5rem;
   padding: 1rem 0;
 }
 
@@ -127,4 +129,60 @@ footer {
   font-weight: bold;
   border: none;
   border-radius: 10px;
+}
+
+/* ------------------------------ CARD TEDDIES BASKET.HTML ----------------------------- */
+
+.Teddies-basket {
+  margin-top: 5rem;
+}
+
+#Basket-empty {
+  font-size: 1.5rem;
+  text-align: center;
+  color: rgb(194, 155, 182);
+}
+
+#template-card_basket {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1200px;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.photo_basket {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.title_basket {
+  text-align: left;
+}
+
+.description_basket {
+  max-width: 400px;
+}
+
+.colors-basket {
+  font-weight: bold;
+}
+
+.quantity_basket,
+.price_basket {
+  display: flex;
+  align-items: center;
+}
+
+.quantity_basket input {
+  width: 150px;
+  text-align: center;
+}
+
+.price_basket {
+  font-size: 1.5rem;
+  color: rgb(194, 155, 182);
+  margin-bottom: 0;
 }

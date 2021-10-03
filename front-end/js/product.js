@@ -27,8 +27,10 @@ fetch(TeddyUrl)
                                                                                     </div>
                                                                                 </div>`;
             addColors(product); 
+            addBasket();
 
-// ---- Ajout des Teddies et leur config au panier ---- //
+        // ---- Ajout des Teddies et leur config au panier ---- //
+        function addBasket() {
             const btnBasket = document.querySelector("#btn-add-basket");
             
             btnBasket.addEventListener("click", (event) =>{
@@ -36,12 +38,15 @@ fetch(TeddyUrl)
 
                 const quantity = document.querySelector("#Teddy-quantity");
                 const quantityNumber = quantity.value;
+
+                const colors = document.querySelector(".Teddies-colors");
+                const colorsValue = colors.value;
         
                 let infoProduct = {
                     TeddyId : product._id,
                     name : product.name,
                     quantity : quantityNumber,
-                    colors : product.colors,
+                    colors : colorsValue,
                     price : product.price,
                 }
 
@@ -53,15 +58,16 @@ fetch(TeddyUrl)
 
                 if (productLocalStorage) {
                     productLocalStorage.push(infoProduct);
-                    localStorage.setItem("product", JSON.stringify(productLocalStorage));
+                    localStorage.setItem("produit", JSON.stringify(productLocalStorage));
                 }
 
                 else{
                     productLocalStorage = [];
                     productLocalStorage.push(infoProduct);
-                    localStorage.setItem("product", JSON.stringify(productLocalStorage));
+                    localStorage.setItem("produit", JSON.stringify(productLocalStorage));
                 }
             })
+        }
         }
 
 // ---- Personnalisation des couleurs ---- //

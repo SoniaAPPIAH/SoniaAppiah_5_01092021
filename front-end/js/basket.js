@@ -1,9 +1,11 @@
+const TeddiesOrder = 'http://localhost:3000/api/teddies/order';
 
 let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
 if(productLocalStorage == null){
     document.getElementsByClassName("Teddies-basket")[0].innerHTML = `<p id="Basket-empty"> Votre panier est vide</p>`;
     document.getElementById("total-price").style.display = "none";
+    document.getElementById("order-form").style.display = "none";
 } else{
     for (i = 0; i < productLocalStorage.length; i++) {
         document.getElementsByClassName("Teddies-basket")[0].innerHTML += `<div id="template-card_basket">
@@ -44,5 +46,3 @@ const reducer = (accumulator, priceValue) => accumulator + priceValue;
 const totalPrice = totalPriceCalcul.reduce(reducer,0);
 
 const priceHTML = document.getElementById("total-price").innerHTML = `<p>Total : ${totalPrice / 100} €</p>`;
-
-

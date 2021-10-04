@@ -2,7 +2,6 @@
 
 const TeddiesAPI = 'http://localhost:3000/api/teddies';
 const TeddiesId = 'http://localhost:3000/api/teddies/:_id';
-const TeddiesOrder = 'http://localhost:3000/api/teddies/order';
 
 // ------------------------------ PAGE INDEX ------------------------------ //
 // ---- Connexion avec l'API ---- //

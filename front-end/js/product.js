@@ -22,7 +22,7 @@ fetch(TeddyUrl)
                                                                                         <label>Couleurs</label>
                                                                                         <select name="colors" class="Teddies-colors"></select>
                                                                                         <label for="Teddy-quantity">Quantité</label>
-                                                                                        <input type="number" id="Teddy-quantity" name="quantity" min="0" max="99">
+                                                                                        <input type="number" id="Teddy-quantity" name="quantity" min="1" value="1">
                                                                                         <button id="btn-add-basket" type="submit">Ajouter au panier</button>
                                                                                     </div>
                                                                                 </div>`;

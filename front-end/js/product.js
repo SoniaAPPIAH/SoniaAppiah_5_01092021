@@ -29,46 +29,45 @@ fetch(TeddyUrl)
             addColors(product); 
             addBasket();
 
-        // ---- Ajout des Teddies et leur config au panier ---- //
-        function addBasket() {
-            const btnBasket = document.querySelector("#btn-add-basket");
+            // ---- Ajout des Teddies et leur config au panier ---- //
+            function addBasket() {
+                const btnBasket = document.querySelector("#btn-add-basket");
+                
+                btnBasket.addEventListener("click", (event) =>{
+                    event.preventDefault();
+
+                    const quantity = document.querySelector("#Teddy-quantity");
+                    const quantityNumber = quantity.value;
+
+                    const colors = document.querySelector(".Teddies-colors");
+                    const colorsValue = colors.value;
             
-            btnBasket.addEventListener("click", (event) =>{
-                event.preventDefault();
+                    let infoProduct = {
+                        TeddyId : product._id,
+                        image : product.imageUrl,
+                        description : product.description,
+                        name : product.name,
+                        quantity : quantityNumber,
+                        colors : colorsValue,
+                        price : product.price,
+                    }
 
-                const quantity = document.querySelector("#Teddy-quantity");
-                const quantityNumber = quantity.value;
+                    //---- Configuration du LocalStorage ---- //
 
-                const colors = document.querySelector(".Teddies-colors");
-                const colorsValue = colors.value;
-        
-                let infoProduct = {
-                    TeddyId : product._id,
-                    image : product.imageUrl,
-                    description : product.description,
-                    name : product.name,
-                    quantity : quantityNumber,
-                    colors : colorsValue,
-                    price : product.price,
-                }
+                    // JSON.parse = converti les données JSON du LocalStorage en objet JS //
+                    let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
-                //---- Configuration du LocalStorage ---- //
-
-                // JSON.parse = converti les données JSON du LocalStorage en objet JS //
-                let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
-
-                if (productLocalStorage) {
-                    productLocalStorage.push(infoProduct);
-                    localStorage.setItem("produit", JSON.stringify(productLocalStorage));
-                }
-
-                else{
-                    productLocalStorage = [];
-                    productLocalStorage.push(infoProduct);
-                    localStorage.setItem("produit", JSON.stringify(productLocalStorage));
-                }
-            })
-        }
+                    if (productLocalStorage) {
+                        productLocalStorage.push(infoProduct);
+                        localStorage.setItem("produit", JSON.stringify(productLocalStorage));
+                    } else{
+                        productLocalStorage = [];
+                        console.log(productLocalStorage);
+                        productLocalStorage.push(infoProduct);
+                        localStorage.setItem("produit", JSON.stringify(productLocalStorage));
+                    }
+                })
+            }
         }
 
         // ---- Personnalisation des couleurs ---- //

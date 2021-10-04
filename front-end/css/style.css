@@ -145,11 +145,12 @@ footer {
 
 #template-card_basket {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  max-width: 1000px;
   margin: auto;
-  max-width: 1200px;
   height: auto;
-  margin-top: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 .photo_basket {
@@ -158,22 +159,23 @@ footer {
   object-fit: cover;
 }
 
-.title_basket {
+.bloc-text_basket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: left;
+  width: 200px;
 }
 
-.description_basket {
-  max-width: 400px;
+.title_basket {
+  font-size: 1.2rem;
 }
 
-.colors-basket {
-  font-weight: bold;
-}
-
-.quantity_basket,
-.price_basket {
+.bloc-variable {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 400px;
 }
 
 .quantity_basket input {
@@ -181,8 +183,56 @@ footer {
   text-align: center;
 }
 
-.price_basket {
-  font-size: 1.5rem;
+.price_basket p {
+  font-size: 1.2rem;
   color: rgb(194, 155, 182);
   margin-bottom: 0;
+}
+
+.icon-delete_basket i {
+  color: rgb(168, 168, 168);
+  font-size: 1.5rem;
+}
+
+#total-price p {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.delete_item {
+  background-color: white;
+  border: none;
+}
+
+#order-form {
+  margin-top: 5rem;
+}
+
+#order-form p {
+  width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 1.5rem 0 3rem 0;
+  border-top: 2px solid rgb(207, 163, 194, 0.5);
+}
+
+#orderFormValidity {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+}
+
+.form-control {
+margin-bottom: 1rem;
+}
+
+.button-order {
+  width: 200px;
+  height: 40px;
+  margin-top: 2rem;
+  background-color: rgb(207, 163, 194);
+  color: white;
+  border: none;
+  border-radius: 10px;
 }

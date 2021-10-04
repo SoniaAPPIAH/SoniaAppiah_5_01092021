@@ -50,9 +50,40 @@
       <div class="Teddies-basket">
 
       </div>
+      <div id="total-price">
+      
+      </div>
+      <div id="order-form">
+        <p>Veuillez remplir le formulaire ci-dessous afin de valider votre commande.</p>
+        <form id="orderFormValidity">
+            <div>
+                <label for="validation01" class="form-label">Prénom</label>
+                <input type="text" id="firstName"  class="form-control" placeholder="Ex: Pauline" required>
+            </div>
+            <div>
+                <label for="validation02" class="form-label">Nom</label>
+                <input type="text" id="lastName"  class="form-control" placeholder="Ex: Dupont" required>
+            </div>
+            <div>
+                <label for="validationt03" class="form-label">Email</label>
+                    <input type="text" id="email"  class="form-control" placeholder="Ex: pauline.dupont@email.com" required>
+            </div>
+            <div>
+                <label for="validation04" class="form-label">Adresse</label>
+                <input type="text" id="address"  class="form-control" placeholder="Ex: 4 avenue des Lilas" required>
+            </div>
+            <div>
+                <label for="validation05" class="form-label">Ville</label>
+                <input type="text" id="city" class="form-control" placeholder="Ex: Paris" required>
+            </div>    
+            <div>
+                  <button type="submit" id="order"  class="button-order">Valider la commande</button>    
+            </div>
+        </form>
+    </div>
     </main>
     <!--------------------- Footer --------------------->
-    <footer>
+    <footer >
       <div class="container-fluid">
         <div class="row justify-content-between text-center">
           <div class="col-6 col-md-3">

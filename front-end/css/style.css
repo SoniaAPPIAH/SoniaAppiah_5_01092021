@@ -178,12 +178,14 @@ footer {
   width: 400px;
 }
 
-.quantity_basket input {
+.quantity_basket {
   width: 150px;
+  font-size: 1.5rem;
   text-align: center;
+  margin-bottom: 0;
 }
 
-.price_basket p {
+.price_basket {
   font-size: 1.2rem;
   color: rgb(194, 155, 182);
   margin-bottom: 0;
@@ -236,3 +238,4 @@ margin-bottom: 1rem;
   border: none;
   border-radius: 10px;
 }
+

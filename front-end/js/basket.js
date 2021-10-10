@@ -1,5 +1,5 @@
-const TeddiesOrder = 'http://localhost:3000/api/teddies/order';
 
+function 
 let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
 if(productLocalStorage == null){
@@ -14,13 +14,9 @@ if(productLocalStorage == null){
                                                                                     <h2 class="title_basket">${productLocalStorage[i].name}</h2>
                                                                                     <p class="colors-basket">- ${productLocalStorage[i].colors} -</p>
                                                                                 </div>
-                                                                                <div class="bloc-variable">
-                                                                                    <div class="quantity_basket">
-                                                                                        <input type="number" name="quantity" min="0" max="99" value="${productLocalStorage[i].quantity}">
-                                                                                    </div>
-                                                                                    <div class="price_basket">
-                                                                                        <p>${productLocalStorage[i].price / 100}€</p>
-                                                                                    </div>
+                                                                                <div class="bloc-variable">                                                                                   
+                                                                                    <p class="quantity_basket">${productLocalStorage[i].quantity}</p>                                                                                   
+                                                                                    <p class="price_basket">${productLocalStorage[i].price / 100}€</p>
                                                                                     <div class="icon-delete_basket">
                                                                                         <button class="delete_item" type="button"> <i class="fas fa-trash-alt"></i> </button>
                                                                                     </div>
@@ -29,20 +25,20 @@ if(productLocalStorage == null){
     }
 }
 
-// ---- Configuration du prix total pour chaque produit ---- //
+// ---- Calcul du prix total du panier ---- //
+function totalBasketCalcul(productLocalStorage) {
+    let totalPriceCalcul = [];
 
+    for (let j = 0; j < productLocalStorage.length; j++) {
+        let productPriceBasket = productLocalStorage[j].price;
 
-// ---- Configuration du prix total du panier ---- //
+        totalPriceCalcul.push(productPriceBasket);
+    }
 
-let totalPriceCalcul = [];
+    const reducer = (accumulator, priceValue) => accumulator + priceValue;
+    const totalPrice = totalPriceCalcul.reduce(reducer,0);
 
-for (let j = 0; j < productLocalStorage.length; j++) {
-    let productPriceBasket = productLocalStorage[j].price;
-
-    totalPriceCalcul.push(productPriceBasket);
+    document.getElementById("total-price").innerHTML = `<p>Total : ${totalPrice / 100} €</p>`;
 }
 
-const reducer = (accumulator, priceValue) => accumulator + priceValue;
-const totalPrice = totalPriceCalcul.reduce(reducer,0);
-
-const priceHTML = document.getElementById("total-price").innerHTML = `<p>Total : ${totalPrice / 100} €</p>`;
+totalBasketCalcul(productLocalStorage);

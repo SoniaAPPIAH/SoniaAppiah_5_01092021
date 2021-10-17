@@ -68,15 +68,8 @@ function addBasket(product) {
             localStorage.setItem("produit", JSON.stringify(productLocalStorage));
         } else{
             productLocalStorage = [];
-            console.log(productLocalStorage);
             productLocalStorage.push(infoProduct);
             localStorage.setItem("produit", JSON.stringify(productLocalStorage));
         }
     });
 }
-
-
-
-
-
-

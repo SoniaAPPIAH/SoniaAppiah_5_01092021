@@ -8,7 +8,7 @@ function displayBasket() {
         document.getElementById("order-form").style.display = "none";
     } else{
         for (i = 0; i < productLocalStorage.length; i++) {
-            document.getElementsByClassName("Teddies-basket")[0].innerHTML += `<div id="template-card_basket">
+            document.getElementsByClassName("Teddies-basket")[0].innerHTML += `<div id="template-card_basket" data-id="${productLocalStorage[i]._id}">
                                                                                     <img class="photo_basket" src="${productLocalStorage[i].image}"/>
                                                                                     <div class="bloc-text_basket">
                                                                                         <h2 class="title_basket">${productLocalStorage[i].name}</h2>
@@ -34,7 +34,6 @@ function totalBasketCalcul(productLocalStorage) {
         totalPriceCalcul.push(productPriceBasket.price);
     }
     
-
     const reducer = (accumulator, priceValue) => accumulator + priceValue;
     const totalPrice = totalPriceCalcul.reduce(reducer,0);
 
@@ -50,37 +49,60 @@ document.querySelector(".button-order").addEventListener("click", function() {
         if(!valid){
             break;
         }
-    }
+    } 0
     if(valid){
-        let orderData = {
-            contact: {
-                lastName: document.querySelector("#lastName").value,
-                firstName: document.querySelector("#firstName").value,
-                email: document.querySelector("#email").value,
-                address: document.querySelector("#address").value,
-                city: document.querySelector("#city").value,     
-            }   
-        }
-    
-        let products = [];
-        for (listIDTeddy of productLocalStorage) {
-            products.push(listIDTeddy);
-        }    
-
-        fetch(TeddiesOrder, {
-            method: "POST",
-            body: JSON.stringify({orderData, products}),
-            headers: {
-                "Content-Type" : "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                localStorage.setItem("order", JSON.stringify(data));
-                window.location.href = "confirmation.html";
-            })
-    } else {
-        alert("Veuillez renseigner les champs correctement");
+    let contact = {
+        lastname: document.querySelector(".lastName").value,
+        firstname: document.querySelector(".firstName").value,
+        email: document.querySelector(".email").value,
+        address: document.querySelector(".address").value,
+        city: document.querySelector(".city").value, 
     }
+
+    localStorage.setItem("contactInfos", JSON.stringify(contact));
+
+    let products = [];
+    for (listId of productLocalStorage) {
+        products.push(listId.TeddyId);
+    }
+
+    const toSend = {
+        products,
+        contact,
+    };
+ 
+
+    fetch(TeddiesOrder , {
+        method: "POST",
+        body: JSON.stringify(toSend),
+        headers: {
+            "Content-Type" : "application/json",
+        },
+    })
+    .then((response) => response.json())
+    .then((infosOrder) => {
+        testOrder(infosOrder);
+    })
     
+    function testOrder () {
+        let jenAiMArre = JSON.parse(localStorage.getItem("order"));
+    
+        if (jenAiMArre) {
+            jenAiMArre.push(toSend);
+            localStorage.setItem("order", JSON.stringify(jenAiMArre));
+            document.location.href = "confirmation.html";
+        } else{
+            jenAiMArre = [];
+            jenAiMArre.push(toSend);
+            localStorage.setItem("order", JSON.stringify(jenAiMArre));
+            document.location.href = "confirmation.html";
+        }
+    }
+
+    } else {
+        alert("blabla");
+    }
 });
+
+//localStorage.setItem("order", JSON.stringify(infosOrder));
+//document.location.href = "confirmation.html";

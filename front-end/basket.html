@@ -57,27 +57,27 @@
         <p>Veuillez remplir le formulaire ci-dessous afin de valider votre commande.</p>
         <form id="orderFormValidity">
             <div>
-              <label for="validation01" class="form-label">Nom</label>
-              <input type="text" id="lastName"  class="form-control" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Dupont" required>
+              <label for="lastName" class="form-label">Nom</label>
+              <input type="text" id="lastName"  class="form-control lastName" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Dupont" required>
           </div>
             <div>
-                <label for="validation02" class="form-label">Prénom</label>
-                <input type="text" id="firstName"  class="form-control" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Pauline" required>
+                <label for="firstName" class="form-label">Prénom</label>
+                <input type="text" id="firstName"  class="form-control firstName" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Pauline" required>
             </div>
             <div>
-                <label for="validationt03" class="form-label">Email</label>
-                <input type="email" id="email"  class="form-control" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Ex: pauline.dupont@email.com" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email"  class="form-control email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Ex: pauline.dupont@email.com" required>
             </div>
             <div>
-                <label for="validation04" class="form-label">Adresse</label>
-                <input type="text" id="address"  class="form-control" placeholder="Ex: 4 avenue des Lilas" required>
+                <label for="address" class="form-label">Adresse</label>
+                <input type="text" id="address"  class="form-control address" placeholder="Ex: 4 avenue des Lilas" required>
             </div>
             <div>
-                <label for="validation05" class="form-label">Ville</label>
-                <input type="text" id="city" class="form-control" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Paris" required>
+                <label for="city" class="form-label">Ville</label>
+                <input type="text" id="city" class="form-control city" pattern="^[a-zA-Z]+(?:['_.\s][a-z]+)*$" placeholder="Ex: Paris" required>
             </div>    
             <div>
-                  <button type="submit" id="order" class="button-order">Valider la commande</button>    
+                  <button type="submit" id="orderForm" class="button-order">Valider la commande</button>    
             </div>
         </form>
     </div>

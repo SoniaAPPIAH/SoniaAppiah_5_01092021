@@ -81,7 +81,7 @@ exports.orderTeddies = (req, res, next) => {
       return res.status(201).json({
         contact: req.body.contact,
         products: teddies,
-        orderId: orderId
+        orderId: orderId,
       })
     }
   ).catch(

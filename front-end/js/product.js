@@ -1,4 +1,3 @@
-// ------------------------------ PAGE PRODUIT ------------------------------ //
 // ---- Récupération des informations de chaque Teddy ---- //
 let params = (new URL(document.location)).searchParams;
 let TeddyId = params.get("_id");
@@ -6,12 +5,14 @@ let TeddyId = params.get("_id");
 // ---- Personnalisation de l'adresse de l'API ---- //
 const TeddyUrl = `http://localhost:3000/api/teddies/${TeddyId}`;
 
-// ---- Affichage les informations du Teddy selectionné via l'Id ---- //
-fetch(TeddyUrl)
-    .then(data => data.json())
-    .then((infoTeddy) => {
-        addCard(infoTeddy);
-});
+// ---- Affichage les informations du Teddy selectionné via le paramètre de la requête ---- //
+async function getUrlTeddy () {
+    fetch(TeddyUrl)
+        .then(data => data.json())
+        .then((infoTeddy) => {
+            addCard(infoTeddy);
+    });
+}
 
 // ---- Mise en page HTML des informations du Teddy  ---- //
 function addCard(product) {
@@ -45,7 +46,6 @@ function addBasket(product) {
         event.preventDefault();
 
         const quantityNumber = document.querySelector("#Teddy-quantity").value;
-
         const colorsValue = document.querySelector(".Teddies-colors").value;
 
         let infoProduct = {
@@ -59,7 +59,6 @@ function addBasket(product) {
         }
 
         //---- Configuration du LocalStorage ---- //
-
         // JSON.parse = converti les données JSON du LocalStorage en objet JS //
         let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
@@ -73,3 +72,5 @@ function addBasket(product) {
         }
     });
 }
+
+getUrlTeddy ();

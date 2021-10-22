@@ -38,6 +38,7 @@ function totalBasketCalcul(productLocalStorage) {
     const totalPrice = totalPriceCalcul.reduce(reducer,0);
 
     document.getElementById("total-price").innerHTML = `<p>Total : <span class="jtest">${totalPrice / 100}</span> €</p>`;
+    localStorage.setItem("totalBasket", JSON.stringify(totalPrice));
 }
 
 displayBasket();

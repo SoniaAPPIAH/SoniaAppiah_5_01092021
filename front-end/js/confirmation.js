@@ -5,11 +5,10 @@ function orderConfirmation() {
     
     firstName.innerText = localStorage.getItem("firstName");
     orderId.innerText = localStorage.getItem("orderId");
-    totalConfirmation.innerText = localStorage.getItem("Basket");
- //   totalConfirmation.innerText = totalPrice;
+    totalConfirmation.innerText = `${localStorage.getItem("totalBasket") / 100}`;
   
     // On vide le localStorage //
-    //localStorage.clear(); 
+   localStorage.clear(); 
   }
 
   orderConfirmation();

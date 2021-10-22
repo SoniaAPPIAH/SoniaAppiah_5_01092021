@@ -239,3 +239,11 @@ margin-bottom: 1rem;
   border-radius: 10px;
 }
 
+
+
+.confirmation-page {
+  max-width: 500px;
+  margin: auto;
+  padding-top: 10rem;
+  text-align: center;
+}

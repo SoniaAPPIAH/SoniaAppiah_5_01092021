@@ -1,6 +1,9 @@
 const TeddiesOrder = 'http://localhost:3000/api/teddies/order';
+
+// ---- Affiche les données stockées dans le LocalStorage ---- //
 let productLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
+// ----Affiche les informations du panier ou un message indiquant que le panier est vide ---- //
 function displayBasket() {
     if(productLocalStorage == null){
         document.getElementsByClassName("Teddies-basket")[0].innerHTML = `<p id="Basket-empty"> Votre panier est vide</p>`;
@@ -17,9 +20,6 @@ function displayBasket() {
                                                                                     <div class="bloc-variable">                                                                                   
                                                                                         <p class="quantity_basket">${productLocalStorage[i].quantity}</p>                                                                                   
                                                                                         <p class="price_basket">${productLocalStorage[i].price / 100}€</p>
-                                                                                        <div class="icon-delete_basket">
-                                                                                            <button class="delete_item" type="button"> <i class="fas fa-trash-alt"></i> </button>
-                                                                                        </div>
                                                                                     </div>
                                                                                 </div>`;
         }
@@ -41,51 +41,56 @@ function totalBasketCalcul(productLocalStorage) {
     localStorage.setItem("totalBasket", JSON.stringify(totalPrice));
 }
 
+// ---- Envoi des informations de la commande au server ---- //
+
+function sendOrder () {
+    document.querySelector(".button-order").addEventListener("click", function() {
+        const valid = true;
+        for(let input of document.querySelectorAll(".form input")){
+            valid &= input.reportValidity();
+            if(!valid){
+                break;
+            }
+        }
+        if(valid){
+            let contact = {
+                lastName: document.querySelector(".lastName").value,
+                firstName: document.querySelector(".firstName").value,
+                email: document.querySelector(".email").value,
+                address: document.querySelector(".address").value,
+                city: document.querySelector(".city").value, 
+                basket: document.querySelector(".jtest").value, 
+            }
+
+            let products = [];
+            for (listId of productLocalStorage) {
+                products.push(listId.TeddyId);
+            }
+
+            const toSend = {
+                products,
+                contact,
+            };
+        
+            fetch(TeddiesOrder, {
+                method: "POST",
+                body: JSON.stringify(toSend),
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                localStorage.setItem("firstName", data.contact.firstName);
+                localStorage.setItem("orderId", data.orderId);
+                localStorage.setItem("Basket", data.contact.basket);
+                document.location.href = "confirmation.html";
+            })
+        } else {
+            alert("Error");
+        }
+    });
+}
+
 displayBasket();
-
-document.querySelector(".button-order").addEventListener("click", function() {
-    const valid = true;
-    for(let input of document.querySelectorAll(".form input")){
-        valid &= input.reportValidity();
-        if(!valid){
-            break;
-        }
-    }
-    if(valid){
-        let contact = {
-            lastName: document.querySelector(".lastName").value,
-            firstName: document.querySelector(".firstName").value,
-            email: document.querySelector(".email").value,
-            address: document.querySelector(".address").value,
-            city: document.querySelector(".city").value, 
-            basket: document.querySelector(".jtest").value, 
-        }
-
-        let products = [];
-        for (listId of productLocalStorage) {
-            products.push(listId.TeddyId);
-        }
-
-        const toSend = {
-            products,
-            contact,
-        };
-    
-        fetch(TeddiesOrder, {
-            method: "POST",
-            body: JSON.stringify(toSend),
-            headers: {
-                "Content-Type" : "application/json",
-            },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            localStorage.setItem("firstName", data.contact.firstName);
-            localStorage.setItem("orderId", data.orderId);
-            localStorage.setItem("Basket", data.contact.basket);
-            document.location.href = "confirmation.html";
-        })
-    } else {
-        alert("blabla");
-    }
-});
+sendOrder();

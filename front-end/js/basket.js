@@ -37,30 +37,33 @@ function totalBasketCalcul(productLocalStorage) {
     const reducer = (accumulator, priceValue) => accumulator + priceValue;
     const totalPrice = totalPriceCalcul.reduce(reducer,0);
 
-    document.getElementById("total-price").innerHTML = `<p>Total : <span class="jtest">${totalPrice / 100}</span> €</p>`;
+    document.getElementById("total-price").innerHTML = `<p>Total : <span class="totalbasket">${totalPrice / 100}</span> €</p>`;
     localStorage.setItem("totalBasket", JSON.stringify(totalPrice));
 }
 
-// ---- Envoi des informations de la commande au server ---- //
+const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+const regexCity = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
+const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
 
+// ---- Envoi des informations de la commande au server ---- //
 function sendOrder () {
     document.querySelector(".button-order").addEventListener("click", function() {
-        const valid = true;
-        for(let input of document.querySelectorAll(".form input")){
-            valid &= input.reportValidity();
-            if(!valid){
-                break;
-            }
-        }
-        if(valid){
             let contact = {
                 lastName: document.querySelector(".lastName").value,
                 firstName: document.querySelector(".firstName").value,
                 email: document.querySelector(".email").value,
                 address: document.querySelector(".address").value,
                 city: document.querySelector(".city").value, 
-                basket: document.querySelector(".jtest").value, 
-            }
+                basket: document.querySelector(".totalbasket").value, 
+            };
+
+            if ((regexName.test(contact.lastName) == true) &
+                (regexName.test(contact.firstName) == true) &
+                (regexMail.test(contact.email) == true) &
+                (regexAddress.test(contact.address) == true) &
+                (regexCity.test(contact.city) == true)
+            ) {
 
             let products = [];
             for (listId of productLocalStorage) {
@@ -87,7 +90,7 @@ function sendOrder () {
                 document.location.href = "confirmation.html";
             })
         } else {
-            alert("Error");
+            alert("Merci de bien vouloir remplir tous les champs correctement.");
         }
     });
 }

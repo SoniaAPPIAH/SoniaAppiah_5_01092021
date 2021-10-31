@@ -1,3 +1,4 @@
+// ---- Affiche les données stockées dans le LocalStorage ---- //
 function orderConfirmation() {
     const firstName = document.querySelector(".firstName");
     const orderId = document.querySelector(".orderId");
